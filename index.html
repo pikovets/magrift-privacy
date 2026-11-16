@@ -22,8 +22,8 @@
     the cloud, and lets you choose a nickname for the weekly league, leaderboards and the in-game chat. Optional rewarded ads
     are shown through Appodeal and its ad partners; in Europe we ask for your consent first. Game statistics and crash
     reports are sent only if you say "Yes", and you can turn them off at any time. For players who tell the game they are
-    under 13, the ad SDK is never started, and there are no statistics, no chat and no notifications. You can delete your
-    account in the game's settings or
+    under 13, Appodeal, Firebase Analytics and Crashlytics are never started, no push-notification token is registered,
+    and there is no chat. You can delete your account in the game's settings or
     <a href="delete-account.html">on this website</a>.</p>
   </div>
 
@@ -37,9 +37,10 @@
     <li>The Game is not directed at children under 13. Its very first screen asks for your year of birth with no year
     pre-selected, before any SDK starts. Only the year is stored, and only on the device: it is not sent to us or saved in
     the cloud. It is asked once and cannot be changed in the settings.</li>
-    <li>If the year shows that you are under 13, the Game runs in a limited mode: the advertising SDK is not started at all,
-    ad buttons are hidden and every ad reward comes by waiting instead; there are no game statistics or crash reports, no
-    chat and no notifications, and other players see only an automatic name like "Mechanic-4F2A" in the league. Cloud saving
+    <li>If the year shows that you are under 13, the Game runs in a limited mode: the Appodeal advertising SDK, Firebase
+    Analytics and Firebase Crashlytics are not started at all and no Firebase Cloud Messaging token is registered; ad buttons
+    are hidden and every ad reward comes by waiting instead; there is no chat and no notifications, and other players see
+    only an automatic name like "Mechanic-4F2A" in the league. Cloud saving
     and purchases through the store still work. When the year of birth shows that the player has turned 13, the Game
     switches to the normal mode and shows the consent screens first.</li>
     <li>We do not knowingly collect more data from children under 13 than this limited mode needs. If you believe a child has
@@ -94,8 +95,8 @@
     <li>For news about the Game (for example, a new zone) and league notices, the Game registers a push token with
     <strong>Firebase Cloud Messaging</strong> (Google). The token is stored with your player ID and language and is used
     only to send these notifications.</li>
-    <li>You can turn notifications off in the Game's settings (all or by category) or in Android settings. Players under 13
-    receive no notifications.</li>
+    <li>You can turn notifications off in the Game's settings (all or by category) or in Android settings. For players under
+    13 no notifications are scheduled and no push token is registered.</li>
   </ul>
 
   <h2>8. Support requests</h2>
@@ -108,7 +109,8 @@
   <ul>
     <li>On first launch the Game asks: "Help us make the game better?" Only if you answer <strong>Yes</strong> does it send
     anonymous gameplay statistics to <strong>Google Firebase Analytics</strong> and crash reports to <strong>Firebase
-    Crashlytics</strong>. Before that, collection is switched off.</li>
+    Crashlytics</strong>. Before that, collection is switched off. For players under 13 neither service is started and
+    the question is not asked.</li>
     <li>Statistics are linked to a random Firebase installation ID, not to your nickname, player ID or contacts. They include
     events such as session length, tutorial steps, run start and end (zone, robot body, result, time, level), upgrade and
     evolution choices, currency spent and earned, shop offers shown and bought, ads offered and watched, tasks, achievements

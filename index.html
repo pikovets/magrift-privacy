@@ -40,8 +40,8 @@
     <li>If the year shows that you are under 13, the Game runs in a limited mode: the Appodeal advertising SDK, Firebase
     Analytics and Firebase Crashlytics are not started at all and no Firebase Cloud Messaging token is registered; ad buttons
     are hidden and every ad reward comes by waiting instead; there is no chat and no notifications, and other players see
-    only an automatic name like "Mechanic-4F2A" in the league. Cloud saving
-    and purchases through the store still work. When the year of birth shows that the player has turned 13, the Game
+    only an automatic name like "Mechanic-4F2A" in the league. Cloud saving, purchases through the store and the network
+    time check (section 12) still work. When the year of birth shows that the player has turned 13, the Game
     switches to the normal mode and shows the consent screens first.</li>
     <li>We do not knowingly collect more data from children under 13 than this limited mode needs. If you believe a child has
     given us personal data, write to us and we will delete it.</li>
@@ -51,7 +51,9 @@
   <p>The Game saves your progress and settings on the device: currencies (bolts and cores), workshop, robot bodies and
   skins, unlocked zones, codex, achievements, tasks, language, sound and display settings, your year of birth and your player
   ID. A short log of recent runs is kept on the device and is attached to a support request only if you tick the box for it
-  (section 8). This data is deleted when you uninstall the Game or clear its data.</p>
+  (section 8). To keep daily rewards and timers fair, the Game also keeps a time anchor: the last confirmed network time,
+  how long the device had been running at that moment and the phone's restart counter. None of it leaves the device. This
+  data is deleted when you uninstall the Game or clear its data.</p>
 
   <h2>4. Account and player ID</h2>
   <ul>
@@ -159,6 +161,7 @@
       <tr><td>Game activity</td><td>Progress, run results, purchases in the Game</td><td>Unity (cloud save, league), Firebase with consent (statistics)</td></tr>
       <tr><td>Ad interactions</td><td>Ad loaded, shown, watched to the end, tapped</td><td>Appodeal and its ad partners: granting the reward, ad measurement</td></tr>
       <tr><td>Messages you write</td><td>Nickname, chat messages, support requests</td><td>Unity (Vivox, Cloud Code, Cloud Save): chat, moderation, support</td></tr>
+      <tr><td>Connection data for the time check</td><td>IP address and the technical name of the app and system (user agent); no player ID, cookies or other data are sent</td><td>Google and Cloudflare: at launch, on return to the Game and every 15 minutes the Game asks www.google.com (or www.cloudflare.com if Google does not answer) for the current time and reads only the time from the reply, so that changing the phone's clock cannot speed up daily rewards and timers</td></tr>
     </tbody>
   </table>
   </div>
@@ -175,7 +178,8 @@
     <li><strong>Google</strong> — Firebase Analytics, Crashlytics and Cloud Messaging, Google Play Games, Google Play Billing
     and the consent form: <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>,
     <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase privacy information</a>,
-    <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">how Google uses data from partner apps</a></li>
+    <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">how Google uses data from partner apps</a>;
+    also the network time check (section 12)</li>
     <li><strong>Appodeal</strong> — ad mediation, including its BidMachine exchange:
     <a href="https://appodeal.com/privacy-policy/" rel="noopener">Appodeal Privacy Policy</a>,
     <a href="https://www.bidmachine.com/privacy-policy" rel="noopener">BidMachine Privacy Policy</a>.
@@ -192,6 +196,8 @@
       <a href="https://www.moloco.com/terms-and-policies/privacy-portal" rel="noopener">Moloco</a>. Appodeal keeps the full,
       current list with each partner's privacy policy and opt-out link on its
       <a href="https://appodeal.com/partners-privacy-policies/" rel="noopener">partners' privacy policies page</a>.</li>
+    <li><strong>Cloudflare</strong> — the backup network time check (section 12):
+    <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare Privacy Policy</a></li>
     <li><strong>Apple</strong> — the App Store, if you play on iPhone or iPad:
     <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple Privacy Policy</a></li>
   </ul>
@@ -227,6 +233,7 @@
       <tr><td>Game statistics / crash reports (with consent)</td><td>Up to 14 months / 90 days</td></tr>
       <tr><td>Push token</td><td>While notifications are on and the Game is installed</td></tr>
       <tr><td>Data received by Appodeal and its ad partners</td><td>As described in each partner's policy</td></tr>
+      <tr><td>Connection data seen during the time check</td><td>As described in Google's and Cloudflare's policies; the Game does not store it</td></tr>
     </tbody>
   </table>
   </div>

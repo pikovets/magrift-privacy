@@ -20,9 +20,10 @@
     <p><strong>In short:</strong> MAGRIFT is a single-player action game for players aged 13 and over. We do not ask for your
     name, phone number, photos, contacts or location. The game creates a random player ID so your progress can be saved in
     the cloud, and lets you choose a nickname for the weekly league, leaderboards and the in-game chat. Optional rewarded ads
-    are shown through Unity LevelPlay and its ad networks; in Europe we ask for your consent first. Game statistics and crash
-    reports are sent only if you say "Yes", and you can turn them off at any time. Players who tell the game they are under 13
-    get no ads, no statistics, no chat and no notifications. You can delete your account in the game's settings or
+    are shown through Appodeal and its ad partners; in Europe we ask for your consent first. Game statistics and crash
+    reports are sent only if you say "Yes", and you can turn them off at any time. For players who tell the game they are
+    under 13, the ad SDK is never started, and there are no statistics, no chat and no notifications. You can delete your
+    account in the game's settings or
     <a href="delete-account.html">on this website</a>.</p>
   </div>
 
@@ -33,11 +34,14 @@
 
   <h2>2. Age and children</h2>
   <ul>
-    <li>The Game is not directed at children under 13. On first launch it asks for your year of birth with no year
-    pre-selected. Only the year is stored, on the device and in your cloud save.</li>
-    <li>If the year shows that you are under 13, the Game runs in a limited mode: no ads, no game statistics or crash reports,
-    no chat, no notifications, and other players see only an automatic name like "Mechanic-4F2A" in the league. Cloud saving
-    and purchases through the store still work.</li>
+    <li>The Game is not directed at children under 13. Its very first screen asks for your year of birth with no year
+    pre-selected, before any SDK starts. Only the year is stored, and only on the device: it is not sent to us or saved in
+    the cloud. It is asked once and cannot be changed in the settings.</li>
+    <li>If the year shows that you are under 13, the Game runs in a limited mode: the advertising SDK is not started at all,
+    ad buttons are hidden and every ad reward comes by waiting instead; there are no game statistics or crash reports, no
+    chat and no notifications, and other players see only an automatic name like "Mechanic-4F2A" in the league. Cloud saving
+    and purchases through the store still work. When the year of birth shows that the player has turned 13, the Game
+    switches to the normal mode and shows the consent screens first.</li>
     <li>We do not knowingly collect more data from children under 13 than this limited mode needs. If you believe a child has
     given us personal data, write to us and we will delete it.</li>
   </ul>
@@ -60,7 +64,7 @@
   </ul>
 
   <h2>5. Cloud save</h2>
-  <p>Your game progress (everything listed in section 3 except sound and display settings) is stored with
+  <p>Your game progress (everything listed in section 3 except sound and display settings and your year of birth) is stored with
   <strong>Unity Cloud Save</strong> under your player ID, together with the time of the last save and a progress score, so
   you can continue on another device and recover progress after a reinstall. If two devices hold different saves, the Game
   asks which one to keep and keeps the other as a backup for 30 days.</p>
@@ -118,20 +122,20 @@
   <ul>
     <li>The Game shows <strong>rewarded video ads only</strong>, and only when you tap a button marked "Ad" (for example, to
     continue a run once, double the bolts of a run, or collect a daily parcel). There are no banners and no ads that interrupt
-    play. Watching is always optional. With the "No Ads" purchase, rewards are given without ads. Players under 13 never see
-    ads.</li>
-    <li>Ads are delivered through the <strong>Unity LevelPlay</strong> mediation platform, which runs an auction among the
-    ad networks listed in section 13. The network that wins shows the ad.</li>
+    play. Watching is always optional: every ad reward can also be obtained by waiting, and an ad only skips the wait. With
+    the "No Ads" purchase, rewards are given without ads. For players under 13 the advertising SDK is never started.</li>
+    <li>Ads are delivered through the <strong>Appodeal</strong> mediation platform, which runs an auction among its ad
+    partners (section 13). The partner that wins shows the ad.</li>
     <li><strong>Consent in Europe.</strong> In the European Economic Area, the United Kingdom and Switzerland, the Game shows
     Google's consent form (IAB Transparency &amp; Consent Framework v2.2) before any ad is requested. The form lists the ad
-    technology partners that may process your data: the networks in section 13, the companies they work with to resell ad
+    technology partners that may process your data: the ad partners in section 13, the companies they work with to resell ad
     space, and Google's list of <a href="https://support.google.com/admob/answer/9012903" rel="noopener">commonly used ad
     technology providers</a> (see also the <a href="https://iabeurope.eu/vendor-list-tcf/" rel="noopener">IAB Global Vendor
     List</a>). If you do not consent, ads are not personalized. You can change your choice at any time: Settings →
     Privacy.</li>
     <li><strong>United States.</strong> Residents of US states with privacy laws can opt out of the "sale" or "sharing" of
     personal information for targeted advertising through the same Settings → Privacy option.</li>
-    <li><strong>Advertising ID.</strong> Ad networks may use your device's advertising ID (Google Advertising ID on Android;
+    <li><strong>Advertising ID.</strong> Appodeal and its ad partners may use your device's advertising ID (Google Advertising ID on Android;
     on iPhone and iPad, Apple's IDFA only if you allow tracking). You can reset or delete it in your device settings
     (Android: Settings → Privacy → Ads).</li>
   </ul>
@@ -147,11 +151,11 @@
   <table>
     <thead><tr><th>Data</th><th>Examples</th><th>Who receives it and why</th></tr></thead>
     <tbody>
-      <tr><td>Identifiers</td><td>Random player ID, Firebase installation ID, push token, advertising ID, IP address</td><td>Unity (account, cloud save, league, chat), Google Firebase (statistics with consent, notifications), LevelPlay and ad networks (delivering and measuring ads, frequency limits, fraud prevention)</td></tr>
-      <tr><td>Approximate location</td><td>Country or region from the IP address (no GPS)</td><td>Ad networks and Firebase: ads in the right language and region, legal compliance, statistics</td></tr>
+      <tr><td>Identifiers</td><td>Random player ID, Firebase installation ID, push token, advertising ID, IP address</td><td>Unity (account, cloud save, league, chat), Google Firebase (statistics with consent, notifications), Appodeal and its ad partners (delivering and measuring ads, frequency limits, fraud prevention)</td></tr>
+      <tr><td>Approximate location</td><td>Country or region from the IP address (no GPS)</td><td>Appodeal, its ad partners and Firebase: ads in the right language and region, legal compliance, statistics</td></tr>
       <tr><td>Device and app information</td><td>Device model, operating system, language, screen size, network type, app version</td><td>All providers: making the service work on your device, support, crash diagnosis</td></tr>
       <tr><td>Game activity</td><td>Progress, run results, purchases in the Game</td><td>Unity (cloud save, league), Firebase with consent (statistics)</td></tr>
-      <tr><td>Ad interactions</td><td>Ad loaded, shown, watched to the end, tapped</td><td>LevelPlay and ad networks: granting the reward, ad measurement</td></tr>
+      <tr><td>Ad interactions</td><td>Ad loaded, shown, watched to the end, tapped</td><td>Appodeal and its ad partners: granting the reward, ad measurement</td></tr>
       <tr><td>Messages you write</td><td>Nickname, chat messages, support requests</td><td>Unity (Vivox, Cloud Code, Cloud Save): chat, moderation, support</td></tr>
     </tbody>
   </table>
@@ -163,23 +167,29 @@
   <p>These companies process data for the Game, each under its own privacy policy:</p>
   <ul>
     <li><strong>Unity Technologies</strong> — Unity Gaming Services (Authentication, Cloud Save, Cloud Code, Leaderboards,
-    Remote Config), Vivox chat, In-App Purchasing, LevelPlay mediation and Unity Ads:
+    Remote Config), Vivox chat and In-App Purchasing:
     <a href="https://unity.com/legal/privacy-policy" rel="noopener">Unity Privacy Policy</a>,
     <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" rel="noopener">Game Player and App User Privacy Policy</a></li>
-    <li><strong>Google</strong> — Firebase Analytics, Crashlytics and Cloud Messaging, Google Play Games, Google Play Billing,
-    Google AdMob and the consent form: <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>,
+    <li><strong>Google</strong> — Firebase Analytics, Crashlytics and Cloud Messaging, Google Play Games, Google Play Billing
+    and the consent form: <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>,
     <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase privacy information</a>,
     <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">how Google uses data from partner apps</a></li>
-    <li>Ad networks that may take part in the LevelPlay auction:
+    <li><strong>Appodeal</strong> — ad mediation, including its BidMachine exchange:
+    <a href="https://appodeal.com/privacy-policy/" rel="noopener">Appodeal Privacy Policy</a>,
+    <a href="https://www.bidmachine.com/privacy-policy" rel="noopener">BidMachine Privacy Policy</a>.
+    Ad partners that may take part in the Appodeal auction include
+      <a href="https://policies.google.com/privacy" rel="noopener">Google AdMob</a>,
       <a href="https://legal.applovin.com/privacy/" rel="noopener">AppLovin</a>,
-      <a href="https://www.pangleglobal.com/privacy/enduser-en" rel="noopener">Pangle</a>,
-      <a href="https://liftoff.ai/privacy-policy/" rel="noopener">Liftoff (Vungle)</a>,
-      <a href="https://www.mintegral.com/en/privacy" rel="noopener">Mintegral</a>,
       <a href="https://www.facebook.com/privacy/policy/" rel="noopener">Meta Audience Network</a>,
+      <a href="https://www.mintegral.com/en/privacy" rel="noopener">Mintegral</a>,
+      <a href="https://www.pangleglobal.com/privacy/enduser-en" rel="noopener">Pangle</a>,
+      <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" rel="noopener">Unity Ads and ironSource</a>,
+      <a href="https://liftoff.ai/privacy-policy/" rel="noopener">Liftoff (Vungle)</a>,
       <a href="https://advertising.inmobi.com/privacy-policy" rel="noopener">InMobi</a>,
-      <a href="https://www.digitalturbine.com/legal/privacy-policy" rel="noopener">DT Exchange (Digital Turbine)</a>,
-      <a href="https://www.moloco.com/terms-and-policies/privacy-portal" rel="noopener">Moloco</a>
-      and Google AdMob and Unity Ads (above).</li>
+      <a href="https://www.digitalturbine.com/legal/privacy-policy" rel="noopener">DT Exchange (Digital Turbine)</a> and
+      <a href="https://www.moloco.com/terms-and-policies/privacy-portal" rel="noopener">Moloco</a>. Appodeal keeps the full,
+      current list with each partner's privacy policy and opt-out link on its
+      <a href="https://appodeal.com/partners-privacy-policies/" rel="noopener">partners' privacy policies page</a>.</li>
     <li><strong>Apple</strong> — the App Store, if you play on iPhone or iPad:
     <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple Privacy Policy</a></li>
   </ul>
@@ -214,7 +224,7 @@
       <tr><td>Support requests and e-mails</td><td>12 months after the request is closed</td></tr>
       <tr><td>Game statistics / crash reports (with consent)</td><td>Up to 14 months / 90 days</td></tr>
       <tr><td>Push token</td><td>While notifications are on and the Game is installed</td></tr>
-      <tr><td>Data received by ad networks</td><td>As described in each network's policy</td></tr>
+      <tr><td>Data received by Appodeal and its ad partners</td><td>As described in each partner's policy</td></tr>
     </tbody>
   </table>
   </div>
@@ -228,7 +238,7 @@
     <li><strong>Delete your account:</strong> Settings → Delete account, or follow the steps on
     <a href="delete-account.html">this page</a> if the Game is no longer installed.</li>
     <li>In the Game: Settings → Privacy (ad consent), Game statistics, Notifications, Hide chat.</li>
-    <li>We do not sell personal information for money. Sharing of advertising data with ad networks for targeted ads can be
+    <li>We do not sell personal information for money. Sharing of advertising data with ad partners for targeted ads can be
     turned off as described in section 10.</li>
     <li>You can also complain to your local data protection authority.</li>
   </ul>

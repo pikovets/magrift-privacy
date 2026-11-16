@@ -40,7 +40,8 @@
     <li>If the year shows that you are under 13, the Game runs in a limited mode: the Appodeal advertising SDK, Firebase
     Analytics and Firebase Crashlytics are not started at all and no Firebase Cloud Messaging token is registered; ad buttons
     are hidden and every ad reward comes by waiting instead; there is no chat and no notifications, and other players see
-    only an automatic name like "Mechanic-4F2A" in the league. Cloud saving, purchases through the store and the network
+    only an automatic name like "Mechanic-4F2A" in the league and the race; co-op is possible only with friends who enter a
+    lobby code, with four quick signals and no text, and never with strangers. Cloud saving, purchases through the store and the network
     time check (section 12) still work. When the year of birth shows that the player has turned 13, the Game
     switches to the normal mode and shows the consent screens first.</li>
     <li>We do not knowingly collect more data from children under 13 than this limited mode needs. If you believe a child has
@@ -72,16 +73,27 @@
   you can continue on another device and recover progress after a reinstall. If two devices hold different saves, the Game
   asks which one to keep and keeps the other as a backup for 30 days.</p>
 
-  <h2>6. Nickname, league, leaderboards and chat</h2>
+  <h2>6. Nickname, league, leaderboards, race, co-op and chat</h2>
   <ul>
     <li><strong>Nickname.</strong> By default you are "Mechanic-XXXX". You may choose your own nickname (3–16 characters).
-    It is checked on our server against a word filter and is shown to other players in the league, the leaderboards and the
-    chat.</li>
+    It is checked on our server against a word filter and is shown to other players in the league, the leaderboards, the
+    race, co-op and the chat.</li>
     <li><strong>League and leaderboards.</strong> When a run ends, the Game sends its result to our server (Unity Cloud Code
     and Leaderboards): zone, time, whether the boss was defeated, number of evolutions, level, kills and the run's start and
     end time. The server uses this to award league points, place you in weekly groups of 30 players and the all-time zone
     records, and to detect impossible results (cheating). Other players see your nickname, league tier, robot body, best times
-    and score, never your player ID.</li>
+    and score, never your player ID. Weekly groups are formed by the power of your workshop, which the server reads from your
+    cloud save.</li>
+    <li><strong>Race and challenges.</strong> In the race you play the week's track against recordings of other players'
+    runs. When a race ends, the Game sends the result and a compact recording of the run (score every 2 seconds, robot
+    position four times a second and key events, up to 4 KB) to our server (Unity Cloud Code), which checks it and updates
+    your race rating. Checked recordings are shown to other players as see-through rivals with your nickname, robot body,
+    paint and score. Rivals are picked by rating and by workshop power, read from the cloud save. A challenge code
+    (6 characters, valid for 7 days) lets a friend race against your recording; both of you see the result.</li>
+    <li><strong>Co-op ("Together").</strong> When this mode becomes available, you can play a run with friends who enter your
+    lobby code. The lobby and the connection go through <strong>Unity Lobby</strong> and <strong>Unity Relay</strong>,
+    which handle your IP address for the session. Players in the lobby see each other's nickname, robot and four quick
+    signals ("Over here!", "Help!", "Thanks!", "Hooray!"); co-op has no text chat.</li>
     <li><strong>Chat.</strong> Players aged 13 and over can chat in rooms by game language using <strong>Unity Vivox</strong>
     text channels. Messages, emoji and shared run cards are visible to everyone in the room; each room shows its last 50
     messages. Links and phone numbers are removed and a word filter is applied. You can hide the chat in Settings.</li>
@@ -155,10 +167,10 @@
   <table>
     <thead><tr><th>Data</th><th>Examples</th><th>Who receives it and why</th></tr></thead>
     <tbody>
-      <tr><td>Identifiers</td><td>Random player ID, Firebase installation ID, push token, advertising ID, IP address</td><td>Unity (account, cloud save, league, chat), Google Firebase (statistics with consent, notifications), Appodeal and its ad partners (delivering and measuring ads, frequency limits, fraud prevention)</td></tr>
+      <tr><td>Identifiers</td><td>Random player ID, Firebase installation ID, push token, advertising ID, IP address</td><td>Unity (account, cloud save, league, race, co-op, chat), Google Firebase (statistics with consent, notifications), Appodeal and its ad partners (delivering and measuring ads, frequency limits, fraud prevention)</td></tr>
       <tr><td>Approximate location</td><td>Country or region from the IP address (no GPS)</td><td>Appodeal, its ad partners and Firebase: ads in the right language and region, legal compliance, statistics</td></tr>
       <tr><td>Device and app information</td><td>Device model, operating system, language, screen size, network type, app version</td><td>All providers: making the service work on your device, support, crash diagnosis</td></tr>
-      <tr><td>Game activity</td><td>Progress, run results, purchases in the Game</td><td>Unity (cloud save, league), Firebase with consent (statistics)</td></tr>
+      <tr><td>Game activity</td><td>Progress, run results, race recordings, purchases in the Game</td><td>Unity (cloud save, league, race), Firebase with consent (statistics)</td></tr>
       <tr><td>Ad interactions</td><td>Ad loaded, shown, watched to the end, tapped</td><td>Appodeal and its ad partners: granting the reward, ad measurement</td></tr>
       <tr><td>Messages you write</td><td>Nickname, chat messages, support requests</td><td>Unity (Vivox, Cloud Code, Cloud Save): chat, moderation, support</td></tr>
       <tr><td>Connection data for the time check</td><td>IP address and the technical name of the app and system (user agent); no player ID, cookies or other data are sent</td><td>Google and Cloudflare: at launch, on return to the Game and every 15 minutes the Game asks www.google.com (or www.cloudflare.com if Google does not answer) for the current time and reads only the time from the reply, so that changing the phone's clock cannot speed up daily rewards and timers</td></tr>
@@ -172,7 +184,7 @@
   <p>These companies process data for the Game, each under its own privacy policy:</p>
   <ul>
     <li><strong>Unity Technologies</strong> — Unity Gaming Services (Authentication, Cloud Save, Cloud Code, Leaderboards,
-    Remote Config), Vivox chat and In-App Purchasing:
+    Remote Config, Lobby, Relay), Vivox chat and In-App Purchasing:
     <a href="https://unity.com/legal/privacy-policy" rel="noopener">Unity Privacy Policy</a>,
     <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" rel="noopener">Game Player and App User Privacy Policy</a></li>
     <li><strong>Google</strong> — Firebase Analytics, Crashlytics and Cloud Messaging, Google Play Games, Google Play Billing
@@ -227,6 +239,9 @@
       <tr><td>Account, cloud save, nickname, all-time records</td><td>Until you delete your account</td></tr>
       <tr><td>Backup of a replaced save</td><td>30 days</td></tr>
       <tr><td>Weekly league groups</td><td>4 weeks after the week ends</td></tr>
+      <tr><td>Race recordings</td><td>Until the end of the track's week; a recording behind a challenge code, 7 days from the code</td></tr>
+      <tr><td>Race rating and season frames</td><td>Until you delete your account</td></tr>
+      <tr><td>Co-op lobby and connection (IP address)</td><td>For the session; Unity's service logs as described in Unity's policy</td></tr>
       <tr><td>Chat messages</td><td>The last 50 messages of each room; older ones disappear from the room</td></tr>
       <tr><td>Reports about chat messages</td><td>90 days</td></tr>
       <tr><td>Support requests and e-mails</td><td>12 months after the request is closed</td></tr>

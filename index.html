@@ -105,17 +105,18 @@
   <h2>7. Notifications</h2>
   <ul>
     <li>The Game can remind you about ready rewards, ending tasks and seasons with notifications scheduled on the device
-    (no server involved). It asks for Android's notification permission only after you agree in the Game.</li>
+    (no server involved). It asks for the phone's notification permission (Android or iOS) only after you agree in the Game.</li>
     <li>For news about the Game (for example, a new zone) and league notices, the Game registers a push token with
     <strong>Firebase Cloud Messaging</strong> (Google). The token is stored with your player ID and language and is used
-    only to send these notifications.</li>
-    <li>You can turn notifications off in the Game's settings (all or by category) or in Android settings. For players under
+    only to send these notifications. On iPhone and iPad, Firebase delivers them through Apple Push Notification
+    service.</li>
+    <li>You can turn notifications off in the Game's settings (all or by category) or in the phone's settings. For players under
     13 no notifications are scheduled and no push token is registered.</li>
   </ul>
 
   <h2>8. Support requests</h2>
   <p>If you write to us from Settings → Support, we receive your topic and message, your player ID, the Game version, the
-  device model, the Android version and the language. If you tick the box, the log of your last run is attached. An e-mail
+  device model, the operating system version and the language. If you tick the box, the log of your last run is attached. An e-mail
   address is optional and is used only to reply to you. Requests are stored with Unity Cloud Save and kept for 12 months
   after we close them. If you write to our e-mail address directly, we keep the correspondence for the same time.</p>
 
@@ -210,7 +211,8 @@
       <a href="https://appodeal.com/partners-privacy-policies/" rel="noopener">partners' privacy policies page</a>.</li>
     <li><strong>Cloudflare</strong> — the backup network time check (section 12):
     <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare Privacy Policy</a></li>
-    <li><strong>Apple</strong> — the App Store, if you play on iPhone or iPad:
+    <li><strong>Apple</strong> — the App Store and push-notification delivery (Apple Push Notification service), if you
+    play on iPhone or iPad:
     <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple Privacy Policy</a></li>
   </ul>
   <p>When we add or remove a partner, we update this list and the effective date.</p>
